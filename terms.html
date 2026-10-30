@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaca: Terms and Conditions</title>
+<style>:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2430;--mute:#667085;--line:#e2e6ec;--open:#e7f6ec;--open-ink:#1b6b3a;--half:#fff3d6;--half-ink:#8a5a00;--full:#eceff3;--full-ink:#6b7280;--mine:#dbeafe;--mine-ink:#1d4ed8;--accent:#2563eb;--err:#b42318;--ok:#157347;--hol:#7a3ea8}
+@media (prefers-color-scheme:dark){:root{--bg:#12151b;--card:#1b2029;--ink:#e8ecf2;--mute:#9aa4b2;--line:#2b3340;--open:#173324;--open-ink:#7fd9a1;--half:#3a2f12;--half-ink:#f2c46d;--full:#242a35;--full-ink:#8b95a5;--mine:#1c2d52;--mine-ink:#9db9ff;--accent:#5b8def;--err:#ff8a7a;--ok:#6fd49a;--hol:#d2a8ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:.2rem 0 .6rem}h2{font-size:1.15rem;margin:1.4rem 0 .5rem}h3{margin:.2rem 0 .5rem;font-size:1rem}
+a{color:var(--accent)}
+.testbar{background:#fde68a;color:#5b4400;text-align:center;padding:6px;font-size:.85rem}
+.flash{padding:10px 12px;border-radius:8px;margin:8px 0}.flash.ok{background:var(--open);color:var(--open-ink)}.flash.err{background:#fee4e2;color:var(--err)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.banner{border-radius:12px;padding:14px 16px;margin:12px 0;font-size:1.05rem}
+.banner.go{background:var(--accent);color:#fff}.banner.wait{background:var(--card);border:1px solid var(--line)}
+.muted{color:var(--mute);font-size:.9rem}
+.tabs{display:flex;gap:8px;margin:12px 0}.tabs a{padding:6px 14px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--card)}.tabs a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+table.board{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.board th,table.board td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left}
+table.board th{background:var(--bg);font-size:.85rem;color:var(--mute)}
+table.board tr.month td{background:var(--bg);font-weight:600;font-size:.85rem;color:var(--mute);letter-spacing:.03em}
+button,.btn{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px}
+.pickbtn,button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.danger{color:var(--err)}
+.months{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.month-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.chips{display:flex;flex-direction:column;gap:6px}.chips form{margin:0}
+.chip{display:flex;justify-content:space-between;align-items:center;width:100%;padding:7px 10px;border-radius:8px;border:1px solid transparent;text-align:left}
+.chip.empty{background:var(--open);color:var(--open-ink)}.chip.half{background:var(--half);color:var(--half-ink)}.chip.full{background:var(--full);color:var(--full-ink)}
+.chip.pickable{cursor:pointer;border-color:var(--accent)}
+.chip .who{display:flex;gap:4px}.chip i{font-style:normal;font-size:.8rem;min-width:26px;text-align:center;padding:1px 6px;border-radius:999px;background:rgba(0,0,0,.08)}
+.chip i.off{opacity:.5}.chip i.mine{background:var(--mine);color:var(--mine-ink);font-weight:700}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+table.plain{width:100%;border-collapse:collapse}table.plain td,table.plain th{padding:5px 6px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+.field{display:flex;flex-direction:column;gap:2px;font-size:.85rem;color:var(--mute)}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;background:var(--full);font-size:.85rem}
+.msg{white-space:pre-wrap;word-break:break-word}
+@media (max-width:560px){main{padding:10px}table.board th,table.board td{padding:6px 7px}}
+
+/* table rows: same colours as the month view */
+table.board tr.r-open td{background:var(--open);color:var(--open-ink)}
+table.board tr.r-half td{background:var(--half);color:var(--half-ink)}
+table.board tr.r-full td{background:var(--full);color:var(--full-ink)}
+table.board td.wk{font-weight:600}
+table.board td.act{width:1%;white-space:nowrap}
+.tag{display:inline-block;min-width:2.4rem;text-align:center;padding:1px 8px;border-radius:999px;background:rgba(0,0,0,.09);font-weight:700}
+.tag.mine{background:var(--mine);color:var(--mine-ink);box-shadow:0 0 0 1px var(--mine-ink)}
+.tag-open{opacity:.75}
+.hol{font-weight:500;font-size:.8rem;color:var(--hol);margin-top:2px}
+.chip .hol{display:block}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:.85rem;color:var(--mute);margin:10px 2px}
+.legend .key{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px;border:1px solid var(--line)}
+.legend .key.open{background:var(--open)}.legend .key.half{background:var(--half)}.legend .key.full{background:var(--full)}
+.legend .key.star{width:auto;height:auto;border:0;color:var(--hol);margin-right:5px}
+.chip{align-items:flex-start}
+.confirm{max-width:520px;margin:24px auto}
+.confirm .big{font-size:1.4rem;font-weight:700;margin:.2rem 0}
+.confirm .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.confirm .actions .btn,.confirm .actions button{padding:10px 16px}
+a.btn{text-decoration:none;display:inline-block}
+</style>
+</head>
+<body>
+
+<main>
+
+
+<h1>Vaca</h1>
+<p class="muted">Text Messaging Program: Terms and Conditions and Privacy Policy<br>Last updated: October 28, 2026</p>
+<p><a href="terms.html">Terms and Conditions</a> &middot; <a href="privacy.html">Privacy Policy</a></p>
+
+<div class="card" id="terms">
+  <h2 style="margin-top:0">Terms and Conditions</h2>
+  <p>These Terms and Conditions govern the Vaca text messaging program (the "Program"). By agreeing to receive text messages from the Program, you agree to these Terms and Conditions.</p>
+
+  <h3>1. Program description</h3>
+  <p>Vaca is a private scheduling tool operated by CONTACT-EMAIL-HERE (the "Organizer") for a small group of people who take turns choosing annual vacation weeks in an ordered "draft." The Program sends text messages that tell a member when it is their turn to choose, include a private link to the schedule, send reminders if a member has not yet chosen, and announce when the draft is complete. The Program does not send marketing or promotional messages.</p>
+
+  <h3>2. Eligibility and consent</h3>
+  <p>The Program is open only to members of the Organizer's private group. You will receive text messages only after you have agreed in writing (by email reply) to receive them and have provided your mobile number. Agreeing to receive text messages is voluntary and is not a condition of taking part in the draft; members who decline are contacted by email instead. Your consent applies only to this Program.</p>
+
+  <h3>3. Message frequency and costs</h3>
+  <p>Message frequency varies: about 1 to 5 messages per turn, and only while the draft is running. <strong>Message and data rates may apply.</strong> The Program is free, but your mobile carrier may charge for text messages and data according to your plan.</p>
+
+  <h3>4. Opting out and getting help</h3>
+  <p>You may withdraw your consent at any time by replying <strong>STOP</strong> to any message. You will receive one confirmation and no further messages. For help, reply <strong>HELP</strong> or contact CONTACT-EMAIL-HERE. To resume messages after opting out, contact CONTACT-EMAIL-HERE.</p>
+
+  <h3>5. Your responsibilities</h3>
+  <ul>
+    <li>Give an accurate mobile number that you own or are authorized to use, and tell the Organizer promptly if it changes or you give it up.</li>
+    <li>Keep your personal link private. Your link lets the holder make picks on your behalf, and you are responsible for picks made with it.</li>
+    <li>Use the Program only for its intended purpose and follow the draft rules set by the Organizer.</li>
+    <li>Check the schedule page yourself if you do not receive a message; the schedule page is the official record, not the texts.</li>
+  </ul>
+
+  <h3>6. Service limitations</h3>
+  <p>Text messages are sent through third-party carriers and a messaging provider, and delivery depends on networks outside the Organizer's control. Messages may be delayed, not delivered, or delivered out of order, and the Program may be unavailable from time to time for maintenance or technical reasons. The Organizer may pause the draft, skip a turn, make a pick on a member's behalf, undo or correct a pick, or change draft settings, and the Organizer's decisions about the draft are final. Carriers are not liable for delayed or undelivered messages.</p>
+
+  <h3>7. Disclaimer of warranties</h3>
+  <p>The Program is provided "as is" and "as available," without warranties of any kind, whether express or implied, including any warranty that messages will be timely, accurate, uninterrupted or error-free.</p>
+
+  <h3>8. Limitation of liability</h3>
+  <p>To the fullest extent permitted by law, the Organizer is not liable for any missed or delayed turn, undelivered or delayed message, scheduling disagreement, or any indirect, incidental or consequential damages arising from use of the Program. The Program is provided free of charge to group members.</p>
+
+  <h3>9. Changes to these Terms</h3>
+  <p>The Organizer may update these Terms and Conditions from time to time. The "Last updated" date above shows the latest version. Continuing to receive messages after a change means you accept the updated Terms.</p>
+
+  <h3>10. Governing law</h3>
+  <p>These Terms are governed by the laws of the state in which the Organizer resides, without regard to conflict-of-law rules.</p>
+
+  <h3>11. Contact</h3>
+  <p>Questions about these Terms or the Program: CONTACT-EMAIL-HERE.</p>
+</div>
+
+</main>
+</body>
+</html>
